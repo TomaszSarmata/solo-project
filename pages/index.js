@@ -1,14 +1,14 @@
 import BookGrid from "@/components/home/book-grid";
+import Hero from "@/components/home/hero";
+import Bio from "../components/home/bio";
 
 export default function Homepage() {
   return (
     <div>
-      <div className="text-7xl text-center text-purple-700 font-bold italic">
-        Tomasz
-      </div>
-      <div className="text-center text-gray-700 text-xl">
-        I'm a bootcamp student
-      </div>
+      <Hero name="Tomasz"></Hero>
+
+      <Bio text="I'm a bootcamp student"></Bio>
+
       <BookGrid></BookGrid>
     </div>
   );
