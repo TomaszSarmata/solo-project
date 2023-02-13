@@ -2,7 +2,7 @@ export default function BookGrid() {
   return (
     <div>
       <div id="book-grid" className="mt-20 grid grid-cols-3 bg-red-100 w-full">
-        <div id="book1" className="bg-green-100 p-4">
+        <div className="bg-green-100 p-4">
           <p className="title mb-4 text-center text-xl font-medium">
             Game of Thrones
           </p>
@@ -10,11 +10,11 @@ export default function BookGrid() {
             George RR Martin
           </p>
         </div>
-        <div id="book2">
+        <div>
           <p className="title">Atomic Habits</p>
           <p className="author">James Clear</p>
         </div>
-        <div id="book3">
+        <div>
           <p className="title">Born a Crime</p>
           <p className="author">Trevor Noah</p>
         </div>
