@@ -1,11 +1,22 @@
 import { useState } from "react";
 import books from "./books";
 
-export default function BookItem({ title, author }) {
+export default function BookItem({ title, author, onLike }) {
   const [likes, setLikes] = useState(0);
+  const [dislikes, setDislikes] = useState(0);
 
   const handleIncrementLike = () => {
-    setLikes(likes + 1);
+    let newValue = likes + 1;
+    let details = {
+      title: title,
+      likes: newValue,
+    };
+    onLike(details);
+    setLikes(newValue);
+  };
+
+  const handleDecrementLike = () => {
+    setDislikes(dislikes + 1);
   };
 
   return (
@@ -21,6 +32,17 @@ export default function BookItem({ title, author }) {
               onClick={handleIncrementLike}
             >
               Like
+            </button>
+          </div>
+          <p className="text-blue-500 text-center font-medium mt-10">
+            {dislikes} dislikes
+          </p>
+          <div className="flex flex-row justify-center w-full">
+            <button
+              className="bg-blue-500 py-1 px-3 rounded-lg"
+              onClick={handleDecrementLike}
+            >
+              Dislike
             </button>
           </div>
         </div>
