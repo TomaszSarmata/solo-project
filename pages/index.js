@@ -7,6 +7,8 @@ export default function Homepage() {
     <div>
       <Hero name="Tomasz"></Hero>
 
+      <a href="/example">example of counter</a>
+
       <Bio text="I'm a bootcamp student"></Bio>
 
       <BookGrid></BookGrid>
