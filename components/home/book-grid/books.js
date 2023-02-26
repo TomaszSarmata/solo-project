@@ -1,4 +1,4 @@
-export const books = [
+export const initialBooks = [
   {
     title: "Games of Thrones",
     author: "George RR Martin",

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import BookItem from "./book-item";
-import { books } from "./books";
+import { initialBooks } from "./books";
 
 export default function BookGrid() {
   const [mostLikedBook, setMostLikedBook] = useState("");
   const [numberOfLikes, setNumberOfLikes] = useState(0);
   const [lastLikedBook, setLastLikedBook] = useState("");
+  const [books, setBooks] = useState(initialBooks);
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
 
   const handleLike = (details) => {
     const { title, likes } = details;
@@ -16,12 +19,63 @@ export default function BookGrid() {
     }
   };
 
+  const handleTitle = (e) => {
+    let title = e.target.value;
+    setTitle(title);
+  };
+
+  const handleAuthor = (e) => {
+    let author = e.target.value;
+    setAuthor(author);
+  };
+
+  const addBook = () => {
+    let book = {
+      title: title,
+      author: author,
+    };
+
+    let newBooks = [];
+    for (let i = 0; i < books.length; i++) {
+      newBooks.push(books[i]);
+    }
+    newBooks.push(book);
+    // let newBooks = [...books, book]; that replaces lines 26-30
+    setBooks(newBooks);
+  };
+
   return (
     <div className="w-full flex flex-col">
+      <div className="w-full my-5">
+        <form action="" className="flex flex-row gap-x-3 mb-5 ml-5">
+          <input
+            placeholder="title"
+            type="text"
+            className="title bg-gray-200 py-1 px-3 text-center rounded-lg border border-gray-400"
+            value={title}
+            onChange={handleTitle}
+          />
+          <input
+            placeholder="author"
+            type="text"
+            className="author bg-gray-200 py-1 px-3 text-center rounded-lg border border-gray-400"
+            value={author}
+            onChange={handleAuthor}
+          />
+          <button
+            className="bg-blue-500 py-1 px-3 text-white rounded-lg"
+            onClick={addBook}
+            type="button"
+          >
+            Add Book
+          </button>
+        </form>
+      </div>
       <div className="mt-20 grid grid-cols-3 bg-red-100 w-full">
-        {books.map((book) => {
+        {books.map((book, index) => {
           return (
             <BookItem
+              key={index}
               title={book.title}
               author={book.author}
               onLike={handleLike}
