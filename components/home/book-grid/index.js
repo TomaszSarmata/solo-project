@@ -11,8 +11,7 @@ export default function BookGrid() {
     const { title, likes } = details;
     setLastLikedBook(title);
     if (likes > numberOfLikes) {
-      let newValue = likes;
-      setNumberOfLikes(newValue);
+      setNumberOfLikes(likes);
       setMostLikedBook(title);
     }
   };
