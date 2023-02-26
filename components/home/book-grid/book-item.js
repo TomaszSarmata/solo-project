@@ -39,7 +39,7 @@ export default function BookItem({ title, author, onLike }) {
           </p>
           <div className="flex flex-row justify-center w-full">
             <button
-              className="bg-blue-500 py-1 px-3 rounded-lg"
+              className="bg-blue-500 py-1 px-3 rounded-lg text-white"
               onClick={handleDecrementLike}
             >
               Dislike

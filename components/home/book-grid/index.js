@@ -5,12 +5,15 @@ import { books } from "./books";
 export default function BookGrid() {
   const [mostLikedBook, setMostLikedBook] = useState("");
   const [numberOfLikes, setNumberOfLikes] = useState(0);
+  const [lastLikedBook, setLastLikedBook] = useState("");
 
   const handleLike = (details) => {
-    if (details.likes > numberOfLikes) {
-      let newValue = details.likes;
+    const { title, likes } = details;
+    setLastLikedBook(title);
+    if (likes > numberOfLikes) {
+      let newValue = likes;
       setNumberOfLikes(newValue);
-      setMostLikedBook(details.title);
+      setMostLikedBook(title);
     }
   };
 
@@ -28,8 +31,9 @@ export default function BookGrid() {
         })}
       </div>
       <div className="w-full my-10">
-        The most liked book is: {mostLikedBook}
+        The last liked book is: {lastLikedBook}
       </div>
+      <div className="w-full my-5">The most liked book is: {mostLikedBook}</div>
     </div>
   );
 }
