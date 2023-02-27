@@ -42,6 +42,8 @@ export default function BookGrid() {
     newBooks.push(book);
     // let newBooks = [...books, book]; that replaces lines 26-30
     setBooks(newBooks);
+    setTitle("");
+    setAuthor("");
   };
 
   return (
@@ -51,14 +53,14 @@ export default function BookGrid() {
           <input
             placeholder="title"
             type="text"
-            className="title bg-gray-200 py-1 px-3 text-center rounded-lg border border-gray-400"
+            className="title hover:bg-gray-200 py-1 px-3 text-center rounded-lg border border-gray-400"
             value={title}
             onChange={handleTitle}
           />
           <input
             placeholder="author"
             type="text"
-            className="author bg-gray-200 py-1 px-3 text-center rounded-lg border border-gray-400"
+            className="author hover:bg-gray-200 py-1 px-3 text-center rounded-lg border border-gray-400"
             value={author}
             onChange={handleAuthor}
           />
