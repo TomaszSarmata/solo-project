@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookItem from "./book-item";
-import { initialBooks } from "./books";
 
 export default function BookGrid() {
   const [mostLikedBook, setMostLikedBook] = useState("");
   const [numberOfLikes, setNumberOfLikes] = useState(0);
   const [lastLikedBook, setLastLikedBook] = useState("");
-  const [books, setBooks] = useState(initialBooks);
+  const [books, setBooks] = useState([]);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+
+  useEffect(() => {
+    getBooks();
+  }, []);
+
+  const getBooks = async () => {
+    const data = await fetch("/api/books");
+    const response = await data.json();
+    setBooks(response);
+  };
 
   const handleLike = (details) => {
     const { title, likes } = details;
